@@ -13,7 +13,7 @@
   "paths": {
     "/api/v1/devices/{deviceId}/notifications": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": ["Fetch Notifications"],
         "summary": "Returns a list of notifications for the current user",
         "operationId": "getNotificationsUsingGET_4",
         "produces": ["application/json"],
@@ -56,6 +56,20 @@
             "description": "user id",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "richText",
+            "in": "path",
+            "description": "[SaaS Only] This property tells the server if the client supports HTML in the Notification Card. Passing \"true\" will result in the addition of a property \"rich_description\" in \"notification_card.body\" of each notification returned. If \"rich_description\" has not been defined when the notification was created, then \"rich_description\" will not be returned and \"description\" will be returned.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "snippet",
+            "in": "path",
+            "description": "[SaaS Only] This property contains a 150 character substring of the \"description\" (not \"rich_description\").",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -73,7 +87,7 @@
     },
     "/api/v1/devices/{targetDeviceId}/notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_6",
         "consumes": ["application/json"],
@@ -123,7 +137,7 @@
     },
     "/api/v1/distributed_notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Synchronously creates a notification to be received by up to 100 recipients",
         "operationId": "createDistributedNotificationsUsingPOST_1",
         "consumes": ["application/json"],
@@ -153,7 +167,7 @@
     },
     "/api/v1/distributed_notifications_async": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Asynchronously creates a notification to be received by many recipients",
         "operationId": "createDistributedNotificationsAsyncUsingPOST_2",
         "consumes": ["application/json"],
@@ -193,7 +207,7 @@
     },
     "/api/v1/notifications": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": ["Fetch Notifications"],
         "summary": "Returns a list of notifications for the current user",
         "operationId": "getNotificationsUsingGET_5",
         "produces": ["application/json"],
@@ -236,6 +250,20 @@
             "description": "user id",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "richText",
+            "in": "path",
+            "description": "[SaaS Only] This property tells the server if the client supports HTML in the Notification Card. Passing \"true\" will result in the addition of a property \"rich_description\" in \"notification_card.body\" of each notification returned. If \"rich_description\" has not been defined when the notification was created, then \"rich_description\" will not be returned and \"description\" will be returned.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "snippet",
+            "in": "path",
+            "description": "[SaaS Only] This property contains a 150 character substring of the \"description\" (not \"rich_description\").",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -251,7 +279,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_7",
         "consumes": ["application/json"],
@@ -299,7 +327,7 @@
         "deprecated": false
       },
       "patch": {
-        "tags": ["Notifications"],
+        "tags": ["Update Notifications"],
         "summary": "bulkUpdateNotifications",
         "operationId": "bulkUpdateNotificationsUsingPATCH_1",
         "consumes": ["application/json"],
@@ -331,7 +359,7 @@
     },
     "/api/v1/notifications/{id}": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": ["Fetch Notifications"],
         "summary": "Returns a notification",
         "operationId": "getNotificationUsingGET_1",
         "produces": ["application/json"],
@@ -342,6 +370,20 @@
             "description": "notification id",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "richText",
+            "in": "path",
+            "description": "[SaaS Only] This property tells the server if the client supports HTML in the Notification Card. Passing \"true\" will result in the addition of a property \"rich_description\" in \"notification_card.body\" of each notification returned. If \"rich_description\" has not been defined when the notification was created, then \"rich_description\" will not be returned and \"description\" will be returned.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "snippet",
+            "in": "path",
+            "description": "[SaaS Only] This property contains a 150 character substring of the \"description\" (not \"rich_description\").",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -357,7 +399,7 @@
         "deprecated": false
       },
       "put": {
-        "tags": ["Notifications"],
+        "tags": ["Update or Create Notifications"],
         "summary": "Update existing or create new notification",
         "operationId": "updateOrCreateNotificationUsingPUT_2",
         "consumes": ["application/json"],
@@ -398,7 +440,7 @@
         "deprecated": false
       },
       "delete": {
-        "tags": ["Notifications"],
+        "tags": ["Delete Notifications"],
         "summary": "Deletes a notification",
         "operationId": "deleteNotificationUsingDELETE_1",
         "produces": ["*/*"],
@@ -423,7 +465,7 @@
     },
     "/api/v1/notifications/{id}/read": {
       "put": {
-        "tags": ["Notifications"],
+        "tags": ["Mark Notifications as Read/Unread"],
         "summary": "Marks a notification as read",
         "operationId": "markNotificationAsReadUsingPUT_1",
         "consumes": ["application/json"],
@@ -461,7 +503,7 @@
     },
     "/api/v1/notifications/{id}/unread": {
       "put": {
-        "tags": ["Notifications"],
+        "tags": ["Mark Notifications as Read/Unread"],
         "summary": "Marks a notification as unread",
         "operationId": "markNotificationAsUnreadUsingPUT_1",
         "consumes": ["application/json"],
@@ -491,7 +533,7 @@
     },
     "/api/v1/tenants/{targetTenantId}/distributed_notifications_async": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Asynchronously creates a notification to be received by many recipients",
         "operationId": "createDistributedNotificationsAsyncUsingPOST_3",
         "consumes": ["application/json"],
@@ -531,7 +573,7 @@
     },
     "/api/v1/tenants/{targetTenantId}/users/{targetUserId}/devices/{targetDeviceId}/notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_8",
         "consumes": ["application/json"],
@@ -581,7 +623,7 @@
     },
     "/api/v1/tenants/{targetTenantId}/users/{targetUserId}/notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_9",
         "consumes": ["application/json"],
@@ -631,7 +673,7 @@
     },
     "/api/v1/tenants/{tenantId}/users/{userId}/devices/{deviceId}/notifications": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": ["Fetch Notifications"],
         "summary": "Returns a list of notifications for the current user",
         "operationId": "getNotificationsUsingGET_6",
         "produces": ["application/json"],
@@ -674,6 +716,20 @@
             "description": "user id",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "richText",
+            "in": "path",
+            "description": "[SaaS Only] This property tells the server if the client supports HTML in the Notification Card. Passing \"true\" will result in the addition of a property \"rich_description\" in \"notification_card.body\" of each notification returned. If \"rich_description\" has not been defined when the notification was created, then \"rich_description\" will not be returned and \"description\" will be returned.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "snippet",
+            "in": "path",
+            "description": "[SaaS Only] This property contains a 150 character substring of the \"description\" (not \"rich_description\").",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -691,7 +747,7 @@
     },
     "/api/v1/users/{targetUserId}/devices/{targetDeviceId}/notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_10",
         "consumes": ["application/json"],
@@ -741,7 +797,7 @@
     },
     "/api/v1/users/{targetUserId}/notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Notifications"],
         "summary": "Creates a notification",
         "operationId": "createNotificationUsingPOST_11",
         "consumes": ["application/json"],
@@ -791,7 +847,7 @@
     },
     "/api/v1/users/{targetUserId}/notifications/{id}": {
       "put": {
-        "tags": ["Notifications"],
+        "tags": ["Update Notifications"],
         "summary": "Update existing or create new notification",
         "operationId": "updateOrCreateNotificationUsingPUT_3",
         "consumes": ["application/json"],
@@ -834,7 +890,7 @@
     },
     "/api/v1/users/{userId}/devices/{deviceId}/notifications": {
       "get": {
-        "tags": ["Notifications"],
+        "tags": ["Fetch Notifications"],
         "summary": "Returns a list of notifications for the current user",
         "operationId": "getNotificationsUsingGET_7",
         "produces": ["application/json"],
@@ -877,6 +933,20 @@
             "description": "user id",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "richText",
+            "in": "path",
+            "description": "[SaaS Only] This property tells the server if the client supports HTML in the Notification Card. Passing \"true\" will result in the addition of a property \"rich_description\" in \"notification_card.body\" of each notification returned. If \"rich_description\" has not been defined when the notification was created, then \"rich_description\" will not be returned and \"description\" will be returned.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "snippet",
+            "in": "path",
+            "description": "[SaaS Only] This property contains a 150 character substring of the \"description\" (not \"rich_description\").",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -894,7 +964,7 @@
     },
     "/api/v2/distributed_notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Synchronously creates a notification to be received by up to 100 recipients",
         "operationId": "createDistributedNotificationsV2UsingPOST_2",
         "consumes": ["application/json"],
@@ -931,7 +1001,7 @@
     },
     "/api/v2/distributed_notifications_async": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Asynchronously creates a notification to be received by many recipients",
         "operationId": "createDistributedNotificationsAsyncV2UsingPOST_2",
         "consumes": ["application/json"],
@@ -971,7 +1041,7 @@
     },
     "/api/v2/tenants/{targetTenantId}/distributed_notifications": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
         "summary": "Synchronously creates a notification to be received by up to 100 recipients",
         "operationId": "createDistributedNotificationsV2UsingPOST_3",
         "consumes": ["application/json"],
@@ -1008,7 +1078,87 @@
     },
     "/api/v2/tenants/{targetTenantId}/distributed_notifications_async": {
       "post": {
-        "tags": ["Notifications"],
+        "tags": ["Create Distributed Notifications"],
+        "summary": "Asynchronously creates a notification to be received by many recipients",
+        "operationId": "createDistributedNotificationsAsyncV2UsingPOST_3",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "notificationData",
+            "description": "notificationData",
+            "required": true,
+            "schema": { "$ref": "#/definitions/DistributedNotifications" }
+          },
+          {
+            "name": "targetTenantId",
+            "in": "path",
+            "description": "tenant name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "security": [{ "Authorization: Bearer <JWT>": ["example"] }],
+        "deprecated": false
+      }
+    },
+    "/api/v3/distributed_notifications_async": {
+      "post": {
+        "tags": ["Create Distributed Notifications"],
+        "summary": "Asynchronously creates a notification to be received by many recipients",
+        "operationId": "createDistributedNotificationsAsyncV2UsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "notificationData",
+            "description": "notificationData",
+            "required": true,
+            "schema": { "$ref": "#/definitions/DistributedNotifications" }
+          },
+          {
+            "name": "targetTenantId",
+            "in": "path",
+            "description": "tenant name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "security": [{ "Authorization: Bearer <JWT>": ["example"] }],
+        "deprecated": false
+      }
+    },
+    "/api/v3/tenants/{targetTenantId}/distributed_notifications_async": {
+      "post": {
+        "tags": ["Create Distributed Notifications"],
         "summary": "Asynchronously creates a notification to be received by many recipients",
         "operationId": "createDistributedNotificationsAsyncV2UsingPOST_3",
         "consumes": ["application/json"],
@@ -1358,6 +1508,16 @@
           ],
           "description": "The fields of the body, if any. Fields are rendered differently according to their type attribute",
           "items": { "$ref": "#/definitions/NotificationCardBodyField" }
+        },
+        "rich_description": {
+          "type": "string",
+          "example": "<span class=\"color-gray\">This is a sample <strong>rich</strong> description</span>",
+          "description": "Supported only by \"/v3/distributed_notifications_async\". This property may contain HTML. \nSupported HTML Tags: br, b, i, u, ol, li, span, div, p, em, strong\nSupported HTML classes: \"color-gray\", \"color-red\", \"color-orange\", \"color-yellow\", \"color-green\", \"color-teal\", \"color-blue\""
+        },
+        "snippet": {
+          "type": "string",
+          "example": "This is a sample description",
+          "description": "This property is generated by the server. It will contain a maximum 150 character substring of thr \"description\" (not \"rich_description\")."
         }
       },
       "title": "NotificationCardBody"
