@@ -18,7 +18,7 @@ copyright: |
 # Configuration
 theme:
   name: material
-  custom_dir: overrides
+  # custom_dir: overrides
   favicon: assets/logos/favicon-light.svg
   logo: assets/logos/favicon-dark.svg
   admonition:
