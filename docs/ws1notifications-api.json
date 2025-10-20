@@ -15,6 +15,48 @@
     {"name": "Mark Notifications as Read/Unread"}
   ],
   "paths": {
+    "/notification-card-styles": {
+      "get": {
+        "tags": ["Notification Card Styles"],
+        "summary": "Returns CSS stylesheet for rendering \"rich_description\" from the GET /notifications API calls. This API supports ETags.",
+        "operationId": "NotificationsStylesheet",
+        "produces": ["text/css"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "If-None-Match",
+            "type": "string",
+            "description": "(Not Required) A response header \"Etag\" will be provided when this API is initially called. Send any subsequent calls with the \"Etag\" in this header. If this value matches the current \"Etag\" the an empty response body with a 304 NOT MODIFIED status code will be returned.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/css":{}
+            },
+            "headers": {
+              "Etag": {
+                "description": "A string identifier representing the cached response body contents.",
+                "type": "string"
+              }
+            }
+          },
+          "304": { 
+            "description": "Not Modified",
+            "headers": {
+              "Etag": {
+                "description": "A string identifier representing the cached response body contents.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [{ "Authorization: Bearer <JWT>": ["example"] }],
+        "deprecated": false
+      }
+    },
     "/api/v1/devices/{targetDeviceId}/notifications": {
       "post": {
         "tags": ["Create Notifications"],
