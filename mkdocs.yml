@@ -1,6 +1,6 @@
 # Project Information
-site_name: WS1 Notification Services APIs
-site_url: https://euc-dev.github.io/ws1-notification-services-apis/
+site_name: WS1 Notification Services API
+site_url: https://euc-dev.github.io/ws1-notification-services-api/
 site_author: Phil Helmling
 site_description: Submodule for developer.omnissa.com
 docs_dir: docs
@@ -8,7 +8,7 @@ site_dir: .site
 use_directory_urls: true
 
 # Repository
-repo_url: https://github.com/euc-dev/ws1-notification-services-apis/
+repo_url: https://github.com/euc-dev/ws1-notification-services-api/
 edit_uri: edit/main/docs/
 
 # Copyright
@@ -18,7 +18,7 @@ copyright: |
 # Configuration
 theme:
   name: material
-  custom_dir: overrides
+  # custom_dir: overrides
   favicon: assets/logos/favicon-light.svg
   logo: assets/logos/favicon-dark.svg
   admonition:
